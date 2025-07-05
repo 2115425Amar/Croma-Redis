@@ -11,11 +11,11 @@ services:
           name: redis-store
           property: connectionString
 
-  - type: web
+  - type: redis
     name: redis-store
     ipAllowList: []  # <- allows connections from all your services on Render
 
-  - type: static
+  - type: web
     name: vue-frontend
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
