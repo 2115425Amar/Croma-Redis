@@ -11,7 +11,7 @@ services:
           name: redis-store
           property: connectionString
 
-  - type: redis
+  - type: web
     name: redis-store
     ipAllowList: []  # <- allows connections from all your services on Render
 
