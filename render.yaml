@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: backend-service
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    plan: free
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          name: redis-store
+          type: redis
+
+  - type: static
+    name: frontend-site
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    plan: free
+
+databases:
+  - name: redis-store
+    plan: free
+    type: redis

@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+.env
+venv/
+env/
+instance/
+.DS_Store
+
+# Flask
+*.log
+
+# Redis dump
+dump.rdb
+
+# Node & Vue
+node_modules/
+dist/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# Render build cache (optional)
+.cache/
+
+# Optional: Python notebooks
+*.ipynb
