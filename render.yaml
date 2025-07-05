@@ -13,10 +13,9 @@ services:
 
   - type: redis
     name: redis-store
+    ipAllowList: []  # <- allows connections from all your services on Render
 
-  - type: web
+  - type: static
     name: vue-frontend
-    env: node
     buildCommand: cd frontend && npm install && npm run build
-    startCommand: cd frontend && npm run preview
     staticPublishPath: frontend/dist
