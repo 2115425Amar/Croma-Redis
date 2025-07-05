@@ -1,26 +1,22 @@
 services:
   - type: web
-    name: backend-service
+    name: flask-backend
     env: python
-    rootDir: backend
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
-    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: python backend/app.py
     envVars:
       - key: REDIS_URL
         fromService:
-          name: redis-store
           type: redis
+          name: redis-store
+          property: connectionString
+
+  - type: redis
+    name: redis-store
 
   - type: web
-    name: frontend-site
-    env: static
-    rootDir: frontend
-    buildCommand: npm install && npm run build
-    staticPublishPath: dist
-    plan: free
-
-databases:
-  - name: redis-store
-    plan: free
-    type: redis
+    name: vue-frontend
+    env: node
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd frontend && npm run preview
+    staticPublishPath: frontend/dist

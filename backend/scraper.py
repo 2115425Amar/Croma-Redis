@@ -1,8 +1,12 @@
+
 # scraper.py
+from dotenv import load_dotenv
+load_dotenv()
 import requests
 from bs4 import BeautifulSoup
 import redis
 import json
+import os
 
 def scrape_page_elements(url):
     response = requests.get(url)
@@ -29,7 +33,8 @@ def scrape_page_elements(url):
     return response
 
 def store_in_redis(data):
-    r = redis.Redis(host='localhost', port=6379, db=0)
+    # r = redis.Redis(host='localhost', port=6379, db=0)
+    r = redis.Redis.from_url(os.getenv("REDIS_URL", "redis://localhost:6379/0"))
     r.set("scraped_content", json.dumps(data))
 
 if __name__ == "__main__":

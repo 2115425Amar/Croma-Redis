@@ -1,11 +1,15 @@
+from dotenv import load_dotenv
+load_dotenv()
 from flask import Flask, jsonify
 from flask_cors import CORS
 import redis
 import json
+import os
 
 app = Flask(__name__)
 CORS(app)
-r = redis.Redis(host='localhost', port=6379, db=0)
+# r = redis.Redis(host='localhost', port=6379, db=0)
+r = redis.Redis.from_url(os.getenv("REDIS_URL", "redis://localhost:6379/0"))
 
 @app.route("/scraped-content", methods=["GET"])
 def get_scraped_content():
