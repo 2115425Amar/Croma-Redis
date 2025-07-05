@@ -1,21 +1,16 @@
 services:
   - type: web
-    name: flask-backend
-    env: python
-    buildCommand: pip install -r backend/requirements.txt
-    startCommand: python backend/app.py
+    name: flask-vue-app
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
     envVars:
-      - key: REDIS_URL
+      - key: REDIS_HOST
         fromService:
           type: redis
           name: redis-store
-          property: connectionString
+          property: host
 
   - type: redis
     name: redis-store
-    ipAllowList: []  # <- allows connections from all your services on Render
-
-  - type: web
-    name: vue-frontend
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
+    ipAllowList: []  # allows access from services in your Render account
