@@ -1,4 +1,3 @@
-
 # scraper.py
 from dotenv import load_dotenv
 load_dotenv()
@@ -12,7 +11,7 @@ def scrape_page_elements(url):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
 
-    # print(soup.prettify())  # For debugging purposes, to see the HTML structure
+    print(soup.prettify())  # For debugging purposes, to see the HTML structure
 
     # TODO: Scrape the head element
     # Refer to BeautifulSoup documentation for more details on how to scrape elements.
@@ -24,7 +23,7 @@ def scrape_page_elements(url):
     # Note: The header is a div with class 'bs-header' on the page we're using.
     # header = None
     header = soup.find("div", class_="bs-header")
-    print(header)
+    # print(header)
         
     response = {
         "head": str(head) if head else None,

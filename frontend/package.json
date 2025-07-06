@@ -2,16 +2,18 @@
   "name": "frontend",
   "version": "1.0.0",
   "dependencies": {
+    "@iconify-icons/fa6-brands": "^1.2.11",
+    "@iconify-icons/mdi": "^1.2.48",
+    "@iconify/vue": "^5.0.0",
     "lucide-vue-next": "^0.525.0",
     "vue": "^3.0.0",
     "vue-icons": "^2.0.0",
     "vue-router": "^4.5.1"
   },
- "scripts": {
-  "serve": "vue-cli-service serve",
-  "build": "vue-cli-service build"
-},
-
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
   "devDependencies": {
     "@vue/cli-service": "^5.0.8",
     "autoprefixer": "^10.4.21",
